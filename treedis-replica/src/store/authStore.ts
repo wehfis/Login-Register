@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 
 export interface UserData {
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
   email: string;
   phone?: string;
 }
