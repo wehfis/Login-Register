@@ -28,9 +28,8 @@ export default function AuthLayout({
           p: { xs: 2, sm: 4, md: 6 },
           zIndex: 2,
           maxWidth: '500px',
-          display: 'none',
-          '@media (min-width:1000px)': {
-            display: 'flex',
+          '@media (max-width:1000px)': {
+            display: 'none',
           },
         }}
       >
