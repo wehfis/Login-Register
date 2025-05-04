@@ -20,7 +20,7 @@ export function SubmitButton({
       fullWidth
       variant="contained"
       disabled={loading}
-      sx={{ mt: 3, mb: 2, ...sx }}
+      sx={{ mt: 3, mb: 2, height: 56, ...sx }}
       {...rest}
     >
       {loading ? <CircularProgress size={24} color="inherit" /> : children}
