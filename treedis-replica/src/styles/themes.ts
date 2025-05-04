@@ -1,8 +1,16 @@
-import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import { red } from '@mui/material/colors'; // Example for error color
-import { PRIMARY_BLUE, WHITE_BG, MEDIUM_GRAY_TEXT, LIGHT_GRAY_BG, DARK_TEXT, LIGHT_GRAY_BORDER, FONT_FAMILY } from './constants';
+import {
+  PRIMARY_BLUE,
+  WHITE_BG,
+  MEDIUM_GRAY_TEXT,
+  LIGHT_GRAY_BG,
+  DARK_TEXT,
+  LIGHT_GRAY_BORDER,
+  FONT_FAMILY,
+} from './constants';
 
-let theme = createTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: PRIMARY_BLUE,
@@ -15,7 +23,7 @@ let theme = createTheme({
       main: red.A400,
     },
     background: {
-      default: LIGHT_GRAY_BG,
+      default: WHITE_BG,
       paper: WHITE_BG,
     },
     text: {
@@ -44,8 +52,8 @@ let theme = createTheme({
       color: DARK_TEXT,
     },
     body2: {
-        fontSize: '0.875rem',
-        color: DARK_TEXT,
+      fontSize: '0.875rem',
+      color: DARK_TEXT,
     },
     caption: {
       fontSize: '0.75rem',
@@ -59,6 +67,30 @@ let theme = createTheme({
   },
 
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        '*': {
+          boxSizing: 'border-box',
+        },
+        body: {
+          overflow: 'hidden',
+          '&::before': {
+            borderColor: PRIMARY_BLUE,
+            borderWidth: '1px',
+            content: `""`,
+            position: 'absolute',
+            top: '0px',
+            right: '0px',
+            width: '70%',
+            height: '100%',
+            background: LIGHT_GRAY_BG,
+            transformOrigin: 'center bottom',
+            transform: 'skew(-13.9deg, 0deg)',
+            zIndex: 1,
+          },
+        },
+      },
+    },
     MuiButton: {
       defaultProps: {
         disableElevation: true,
@@ -81,36 +113,33 @@ let theme = createTheme({
     MuiTextField: {
       defaultProps: {
         variant: 'outlined',
-        InputLabelProps: {
-          shrink: true,
-        },
       },
     },
     MuiOutlinedInput: {
-        styleOverrides: {
-            root: () => ({
-                borderRadius: '8px',
-                backgroundColor: WHITE_BG,
-                '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor: LIGHT_GRAY_BORDER,
-                },
-                '&:hover .MuiOutlinedInput-notchedOutline': {
-                    borderColor: MEDIUM_GRAY_TEXT,
-                },
-                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                    borderColor: PRIMARY_BLUE,
-                    borderWidth: '1px',
-                },
-            }),
-            input: ({ theme }) => ({
-                padding: theme.spacing(1.5, 1.75),
-                color: DARK_TEXT,
-                '&::placeholder': {
-                    color: MEDIUM_GRAY_TEXT,
-                    opacity: 1,
-                },
-            }),
-        }
+      styleOverrides: {
+        root: () => ({
+          borderRadius: '8px',
+          backgroundColor: LIGHT_GRAY_BG,
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: LIGHT_GRAY_BORDER,
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: MEDIUM_GRAY_TEXT,
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: PRIMARY_BLUE,
+            borderWidth: '1px',
+          },
+        }),
+        input: ({ theme }) => ({
+          padding: theme.spacing(1.5, 1.75),
+          color: DARK_TEXT,
+          '&::placeholder': {
+            color: MEDIUM_GRAY_TEXT,
+            opacity: 1,
+          },
+        }),
+      },
     },
     MuiInputLabel: {
       styleOverrides: {
@@ -149,22 +178,16 @@ let theme = createTheme({
     },
 
     MuiIconButton: {
-        styleOverrides: {
-            root: () => ({
-                color: MEDIUM_GRAY_TEXT,
-            }),
-            colorPrimary: {
-                color: PRIMARY_BLUE,
-                '&:hover': {
-                    backgroundColor: 'rgba(59, 111, 255, 0.08)'
-                }
-            }
-        }
-    }
+      styleOverrides: {
+        root: () => ({
+          color: MEDIUM_GRAY_TEXT,
+        }),
+        colorPrimary: {
+          color: PRIMARY_BLUE,
+        },
+      },
+    },
   },
-
 });
-
-theme = responsiveFontSizes(theme);
 
 export default theme;
